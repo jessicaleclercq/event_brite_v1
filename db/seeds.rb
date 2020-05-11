@@ -36,4 +36,3 @@ end
     event_id: Event.first.id
     )
 end
-
