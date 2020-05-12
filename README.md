@@ -1,27 +1,35 @@
-# Eventbrite
+#Eventbrite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Site internet accessible au lien suivant : http://events-round-the-hood.herokuapp.com/
 
-Things you may want to cover:
+##Configuration en local
 
-* Ruby version
+Entrez les commandes suivantes dans votre terminal  :
 
-* System dependencies
+$ bundle install
 
-* Configuration
+##Database creation
 
-* Database creation
+$ rails db:drop
 
-* Database initialization
+$ rails db:create
 
-* How to run the test suite
+$ rails db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+##Database initialisation
 
-* Deployment instructions
+$rails db:seed
 
-* ...
+🔥 Connexion au site
+
+$ rails server
+
+Une fois le server connecté, rendez-vous sur :
+
+http://localhost:3000/
+
+Créer ensuite votre compte !
+
+Bonne visite !
 
 
-You can access the app at the following link : http://events-round-the-hood.herokuapp.com/
