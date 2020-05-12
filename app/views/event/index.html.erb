@@ -1,2 +1,30 @@
 <h1>Event#index</h1>
-<p>Find me in app/views/event/index.html.erb</p>
+
+<ul>
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+    </li>
+
+    <li>
+      Voici ton email : <%= current_user.email %>
+    </li>
+
+
+    <li>
+      <%= link_to "MOdifier son e-mail et son mot de passe", edit_user_registration_path %>
+    </li>
+
+  <% else %>
+    <li>    
+      <%= link_to "Sign in", new_user_session_path %>
+    </li>
+
+    <li>
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+
+  <% end %>
+</ul>
+
+<h1>Voici la liste de tes events</h1>
