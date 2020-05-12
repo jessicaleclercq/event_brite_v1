@@ -1,30 +1,40 @@
-<h1>Event#index</h1>
+<!doctype html>
+<html lang="en">
 
-<ul>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
-    </li>
-
-    <li>
-      Voici ton email : <%= current_user.email %>
-    </li>
+  <body>
 
 
-    <li>
-      <%= link_to "Modifier son e-mail et son mot de passe", edit_user_registration_path %>
-    </li>
+<h1>Events round the Hood</h1>
 
-  <% else %>
-    <li>    
-      <%= link_to "Sign in", new_user_session_path %>
-    </li>
 
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
+<h1>Voici la liste de tes events :</h1>
 
-  <% end %>
-</ul>
+<main class="container">
+  <br>    
+    <div class="jumbotron jumbotron-hero px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2><%= link_to "Create a New Event", new_event_path, class:"btn btn-outline-info mx-1 my-1" %></h2>
+      </div>
+    </div>
 
-<h1>Voici la liste de tes events</h1>
+    <div class="row row-cols-5 row-cols-md-3  p-md-0 m-md-0 d-flex justify-content-center">
+    <% Event.all.sort.each do |event| %>
+      <div class="card border-info text-center bg-light my-3 mx-3" style="max-width: 18rem;"> 
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.location %></p>
+          <p class="card-text"><%= event.start_date %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "See more", event_path(event.id), class:"btn btn-outline-info mx-1 my-1" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</main>
+</body>
+</html>
