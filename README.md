@@ -1,6 +1,6 @@
 #Eventbrite
 
-##Site internet accessible au lien suivant : http://events-round-the-hood.herokuapp.com/
+##Site internet (très rudimentaire, je m'excuse d'avance de l'expérience utilisateur) accessible au lien suivant : http://events-round-the-hood.herokuapp.com/
 
 ##Configuration en local
 
@@ -28,8 +28,5 @@ Une fois le server connecté, rendez-vous sur :
 
 http://localhost:3000/
 
-Créer ensuite votre compte !
-
-Bonne visite !
-
+Vous pouvez ensuite créer votre compte !
 
