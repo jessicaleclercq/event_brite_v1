@@ -7,7 +7,10 @@ class EventsController < ApplicationController
 
   def show
       @event = Event.find(params[:id])
-  end  
+      if @event.admin_id == current_user.id
+        @admin = current_user
+      end  
+  end
 
   def new
     @event = Event.new
