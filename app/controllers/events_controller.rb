@@ -1,4 +1,4 @@
-class EventController < ApplicationController
+class EventsController < ApplicationController
   
   # View a list of events
   def index
@@ -9,8 +9,8 @@ class EventController < ApplicationController
       @event = Event.find(params[:id])
   end  
 
-  #def new
-    #@event = Event.new
-  #end
+  def new
+    @event = Event.new
+  end
 
 end
