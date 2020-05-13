@@ -12,7 +12,7 @@ users = []
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         email: Faker::Internet.email,
-        description: Faker::Lorem.paragraphs,
+        description: Faker::Restaurant.description,
         password: "testmdp"
         
     )
@@ -25,8 +25,8 @@ duration_array = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
     events << Event.create!(
         start_date: Time.parse("2020-08-12"),
         duration: 5 * rand(1..100),
-        title: Faker::DcComics.title,
-        description: Faker::Lorem.paragraphs,
+        title: Faker::TvShows::TwinPeaks.quote,
+        description: Faker::Restaurant.review,
         price: rand(1..300),
         location: Faker::Address.city,
         admin: User.last

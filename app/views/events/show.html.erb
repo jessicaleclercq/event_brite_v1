@@ -6,19 +6,23 @@
 
 <div class="card my-5">
   <div class="card-header">
+    <img class="card-img-top" alt="Card image cap" src="https://i2.wp.com/stylegirlfriend.com/wp-content/uploads/2014/06/17577_398893615296_5386806_n.jpg">
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Début : </strong><%= @event.start_date.strftime('%d/%m/%Y à %H:%M') %></li>
-    <li class="list-group-item"><strong>Prix : </strong><%= @event.price %> €</li>
-    <li class="list-group-item"><strong>Où : </strong><%= @event.location %></li>
-    <li class="list-group-item"><strong>Description : </strong><%= @event.description %></li>
+    <li class="list-group-item"><strong>When: </strong><%= @event.start_date.strftime('%d/%m/%Y à %H:%M') %></li>
+    <li class="list-group-item"><strong>Price: </strong><%= @event.price %> €</li>
+    <li class="list-group-item"><strong>Where: </strong><%= @event.location %></li>
+    <li class="list-group-item"><strong>Description: </strong><%= @event.description %></li>
+    <li class="list-group-item"><strong>Participants: </strong></li>
+    <li class="list-group-item"><strong>Administrator: </strong><% @user = User.find_by(id: @event.admin_id) %><%= @user.email %>
+</li>
   </ul>
 </div>
 
 <% if @admin %>
-<%= link_to 'Editer', edit_event_path(@event), class:"btn btn-success" %> 
-<%= link_to 'Supprimer', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+<%= link_to 'Edit', edit_event_path(@event), class:"btn btn-success" %> 
+<%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
 <% end %>
 
-<%= link_to '« Retour Accueil', events_path, class:"btn btn-primary" %>
+<%= link_to 'Back to Homepage', events_path, class:"btn btn-dark" %>
 </main>
