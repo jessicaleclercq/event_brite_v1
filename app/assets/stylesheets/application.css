@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+
+.jumbotron {
+  background-image: url(https://static01.nyt.com/images/2018/10/26/movies/burning-still/burning-still-videoSixteenByNineJumbo1600.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: 'Roboto';
+  min-height: 650px;
+}
+
+.jumbotitle {
+    font-size: 8em;
+  }
+.card-header {
+  color: white;
+ }

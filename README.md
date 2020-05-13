@@ -1,14 +1,14 @@
-#Eventbrite
+# Eventbrite
 
-##Site internet (très rudimentaire, je m'excuse d'avance de l'expérience utilisateur) accessible au lien suivant : http://events-round-the-hood.herokuapp.com/
+## Site internet (très rudimentaire, je m'excuse d'avance de l'expérience utilisateur) accessible au lien suivant : http://events-round-the-hood.herokuapp.com/
 
-##Configuration en local
+## Configuration en local
 
 Entrez les commandes suivantes dans votre terminal  :
 
 $ bundle install
 
-##Database creation
+## Database creation
 
 $ rails db:drop
 
@@ -16,7 +16,7 @@ $ rails db:create
 
 $ rails db:migrate
 
-##Database initialisation
+## Database initialisation
 
 $rails db:seed
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:secret]
+  before_action :authenticate_user!, only: [:show] #les visiteurs non connectés ne peuvent pas voir les profils
 
   def index
     redirect_to :root
@@ -7,11 +7,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+      @user = User.find(params[:id])
+ #profil utilisateur pas visible par d'autres utilisateurs connectés
   end
 
   def new
-    @user = User.new
+    @user = User.new 
   end
 
   def edit

@@ -16,4 +16,15 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    @event = Event.new(title: params[:title], duration: params[:duration], description: params[:description], price: params[:price],start_date: params[:start_date], location: params[:location], admin_id: current_user.id)
+    if @event.save
+      redirect_to root_path
+    else
+      flash[:danger] = "You must fill all the fields !"
+      redirect_to new_event_path
+    end
+
+  end  
+
 end

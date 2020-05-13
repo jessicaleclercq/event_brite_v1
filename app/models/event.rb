@@ -39,7 +39,11 @@ class Event < ApplicationRecord
   end
 
   def duration_multiple_5_positive
-    errors.add(:duration, "has to be a multiple of 5") unless duration % 5 == 0 
-  end  
+return if duration.blank?
+
+  if duration%5 !=0 || duration < 0
+    errors.add(:duration, "must be a positive number multiple of 5")
+  end
+end  
 
 end

@@ -1,9 +1,41 @@
-<h1>Welcome to your Dashboard <%= current_user.email %></h1>
-<br>
-<p>First name:</p>
-<p>Last name:</p>
-<p>Description:</p>
+<!doctype html>
+<html lang="en">
 
+<main class="container-fluid">
+  <div class="card border-dark mb-3">
+    <div class="card-body text-dark">
+      <h2 class="card-title display-4 text-center my-3">Welcome to your Dashboard <%= current_user.email %></h2>
+      <h4 class="card-title my-3">First name:</h4>
+      <h4 class="card-title my-3">Last name:</h4>
+      <h4 class="card-title my-3">Description:</h4>
+      <h4 class="card-title my-3">Email:</h4>
+      <h6 class="card-text my-3"><%= current_user.email %></h6>
+      <%= link_to 'Reset your password', edit_user_registration_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+      <h2 class="display-4 text-center my-3">Events you created:</h1>
 
-<p>Email: <%= current_user.email %></p>
-
+  <% Event.all.each do |event| %>
+    <% if @user.id == event.admin.id %>
+      <div class="card my-3">
+        <div class="card-header">
+          <h4><%= event.title %></h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> the <%= event.start_date %> at <%= event.location %></h5>
+          <p class="card-text"><%= event.description %></p>
+          <%= link_to 'Show', event, class:"btn btn-primary" %> 
+          <% if user_signed_in? && current_user.id == event.admin.id %>
+            <%= link_to 'Edit', edit_event_path(event), class:"btn btn-success" %> 
+            <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          Price : <%= event.price %> € // Length : <%= event.duration %> min
+        </div>
+      </div>
+    <% end %>
+<% end %>
+</main>
+</body>
+</html>

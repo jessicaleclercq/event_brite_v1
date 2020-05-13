@@ -4,15 +4,13 @@
   <body>
 
 
-<h1>Events round the Hood</h1>
-
-
-<h1>Voici la liste de tes events :</h1>
-
-<main class="container">
+<main class="container-fluid">
   <br>    
     <div class="jumbotron jumbotron-hero px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <div class="container">
+        <h1 class="mb-1 jumbotitle text-white">
+            Events around the Hood
+            </h1>
         <br>
         <br>
         <br>
@@ -20,10 +18,11 @@
         <h2><%= link_to "Create a New Event", new_event_path, class:"btn btn-outline-info mx-1 my-1" %></h2>
       </div>
     </div>
-
+      <h2 class="display-4 text-center my-3">Here's a list of upcoming events:</h1>
     <div class="row row-cols-5 row-cols-md-3  p-md-0 m-md-0 d-flex justify-content-center">
     <% Event.all.sort.each do |event| %>
       <div class="card border-info text-center bg-light my-3 mx-3" style="max-width: 18rem;"> 
+        <img class="card-img-top" alt="Card image cap" src="https://static01.nyt.com/images/2012/06/29/movies/daisies-slides-slide-S5P1/daisies-slides-slide-S5P1-superJumbo.jpg">
         <div class="card-body">
           <h5 class="card-title"><%= event.title %></h5>
           <p class="card-text"><%= event.location %></p>
