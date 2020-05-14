@@ -10,7 +10,7 @@
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>When: </strong><%= @event.start_date.strftime('%d/%m/%Y à %H:%M') %></li>
-    <li class="list-group-item"><strong>Price: </strong><%= @event.price %> €</li>
+    <li class="list-group-item"><strong>Price: </strong><%= @event.price %></li>
     <li class="list-group-item"><strong>Where: </strong><%= @event.location %></li>
     <li class="list-group-item"><strong>Description: </strong><%= @event.description %></li>
     <li class="list-group-item"><strong>Participants: </strong></li>
@@ -19,10 +19,13 @@
   </ul>
 </div>
 
-<% if @event.admin_id == current_user.id %>
-<%= link_to 'Edit', edit_event_path(@event), class:"btn btn-dark" %> 
-<%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
-<% end %>
-
-<%= link_to 'Back to Homepage', events_path, class:"btn btn-dark" %>
+<% if @event.admin_id != current_user.id %>
+    <% if @event.users.include?(current_user) %>
+    <p>Bravo tu participes déjà à cet évènement !!</p>
+    <% else %>
+      <%= link_to "Participer à l'évènement", new_attendance_path(id: @event.id), class:"btn btn-success" %>
+    <% end %>  
+  <% end %>  
+    <%= link_to 'Retour Accueil', events_path, class:"btn btn-primary" %>
+  <p>Il y a <%= @event.users.count %> participants!!</p> 
 </main>

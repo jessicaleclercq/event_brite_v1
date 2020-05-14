@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
       if @event.admin_id == current_user
         @admin = current_user
-      end  
+      end
   end
 
   def new
@@ -47,5 +47,11 @@ end
     redirect_to root_path
   end
 
+private
+
+  def event_params
+    params.require(:events).permit(:title, :location, :duration, :description, :price, :start_date, :admin_id)
+  end
+  
 end
 

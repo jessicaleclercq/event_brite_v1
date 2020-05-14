@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+    <h1> 
+           Participer à l'évènement <%= @event.title %>
+    </h1>
+
+ <%= link_to "Participer à l'évènement", new_charge_path(id: @event.id), class:"btn btn-success" %>
+</div>
+</div>
+  </div>
+</body>
+</html>
