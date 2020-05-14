@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Events round the Hood</title>
+  </head>
+  <body>
+   <div class="card-body">
+      <%= form_tag url_for(action: 'update'), method: "put" do %>
+            
+        <form method="GET"></br>
+          <input class="form-control rounded-0" type="text" name="title" minlength="5" maxlength="140" placeholder="Quel est le titre de votre évènement ?">
+          </br>
+          <textarea class="form-control rounded-0" name="description" placeholder="Ajouter une description de votre évènement" minlength="20" maxlength="1000"></textarea>
+          <br>
+          <div class="row">
+            <div class="col">
+                <input class="form-control rounded-0" type="number" name="price"  placeholder="Quel est le tarif de votre évènement ?" min="1" max="150">
+            </div>
+            <div class="col">
+                <input type="text" name="location" class="form-control" placeholder="Où se passe votre évènement ?">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+                <div class="form-group row">
+                  <label for="start_date" class="col-sm-2 col-form-label">Date :</label>
+                  <div class="col-sm-10">
+                      <input class="form-control rounded-0" id="start_date" type="date" name="start_date" min="<%=Time.now.strftime("%Y-%m-%d")%>" placeholder="Quand se passe votre évènement ?">
+                  </div>
+              </div>
+            </div>
+            <div class="col">
+                <input class="form-control rounded-0" type="number" name="duration" step="5" min="5" placeholder="Quelle est la durée de votre évènement ? ( en minutes)">
+            </div>
+          </div>  
+                
+          <br>
+          <div class="container text-center">
+            <input type="submit" value="Modifier l'évènement" class="btn btn-lg btn-primary rounded-2">
+          </div>
+        </form>
+      <% end %>
+    </div>
+  </body>
+</html>

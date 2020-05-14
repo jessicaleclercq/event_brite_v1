@@ -7,10 +7,10 @@
       <h2 class="card-title display-4 text-center my-3">Welcome to your Dashboard <%= current_user.email %></h2>
           <img class="card-img-top" alt="Card image cap" src="http://sensesofcinema.com/assets/uploads/2017/06/feature-spring-breakers-750x400.jpg" style="size: 500px">
 
-      <h4 class="card-title my-3">First name:</h4>
-      <h4 class="card-title my-3">Last name:</h4>
-      <h4 class="card-title my-3">Description:</h4>
-      <h4 class="card-title my-3">Email:</h4>
+      <h4 class="card-title my-3">First name: <%= current_user.first_name %></h4>
+      <h4 class="card-title my-3">Last name:<%= current_user.last_name %></h4>
+      <h4 class="card-title my-3">Description: <%= current_user.description %></h4>
+      <h4 class="card-title my-3">Email:<%= current_user.email %></h4>
       <h6 class="card-text my-3"><%= current_user.email %></h6>
       <%= link_to 'Reset your password', edit_user_registration_path, class:"btn btn-dark" %>
     </div>

@@ -19,9 +19,9 @@
   </ul>
 </div>
 
-<% if @admin %>
-<%= link_to 'Edit', edit_event_path(@event), class:"btn btn-success" %> 
-<%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+<% if @event.admin_id == current_user.id %>
+<%= link_to 'Edit', edit_event_path(@event), class:"btn btn-dark" %> 
+<%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
 <% end %>
 
 <%= link_to 'Back to Homepage', events_path, class:"btn btn-dark" %>
