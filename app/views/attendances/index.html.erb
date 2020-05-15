@@ -1,2 +1,15 @@
-<h1>Attendances#index</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
+<h1>Mon espace évenement</h1>
+
+
+<h2 class="display-4 text-center my-3">Voici la liste des participant.e.s:</h2>
+  <div class="row row-cols-5 row-cols-md-3  p-md-0 m-md-0 d-flex justify-content-center">
+    <% Attendance.all.sort.each do |attendance| %>
+      <div class="card border-dark text-center bg-light my-3 mx-3" style="max-width: 18rem;">
+        <img class="card-img-top" alt="Card image cap" src="https://static01.nyt.com/images/2012/06/29/movies/daisies-slides-slide-S5P1/daisies-slides-slide-S5P1-superJumbo.jpg">
+        <div class="card-body">
+          <p class="card-text"><%= @event.users.first_name%></p>
+        </div>
+           <% end %>
+  </div>  
+  </div>
+    
