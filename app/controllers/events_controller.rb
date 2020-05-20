@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # View a list of events
   def index

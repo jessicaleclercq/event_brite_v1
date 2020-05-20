@@ -1,15 +1,11 @@
 <main class="container">
-<p id="notice"><%= notice %></p>
-
-<h1 class="text-center"><%= @event.title %></h1>
-
-
-<div class="card my-5">
-   <h3>Charger un event pic ?</h3>
-  <%= form_tag event_event_pics_path(@event), multipart: true do %>
-    <%= file_field_tag :event_pic %>
-    <%= submit_tag "soumettre" %>
-  <% end %>
+  <p id="notice"><%= notice %></p>
+  <div class="card-header">
+    <strong>Email de l'organisateur : </strong><% @user = User.find_by(id: @event.admin_id) %><%= @user.email %>
+  </div>
+  <h1 class="text-center"><%= @event.title %></h1>
+  <div class="card my-5">
+    <div class="card my-5">
   <div class="card-header">
   <%if @event.event_pic.attached?%>
     <%= image_tag @event.event_pic, alt: 'event_pic' %>
@@ -17,33 +13,37 @@
     <img class="card-img-top" alt="Card image cap" src="https://i2.wp.com/stylegirlfriend.com/wp-content/uploads/2014/06/17577_398893615296_5386806_n.jpg">
   <%end%>
   </div>
-
-
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>When: </strong><%= @event.start_date.strftime('%d/%m/%Y à %H:%M') %></li>
-    <li class="list-group-item"><strong>Price: </strong><%= @event.price %></li>
-    <li class="list-group-item"><strong>Where: </strong><%= @event.location %></li>
-    <li class="list-group-item"><strong>Description: </strong><%= @event.description %></li>
-    <li class="list-group-item"><strong>Participants: </strong></li>
-    <li class="list-group-item"><strong>Administrator: </strong><% @user = User.find_by(id: @event.admin_id) %><%= @user.email %>
-</li>
-  </ul>
-</div>
-
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Début : </strong><%= @event.start_date.strftime('%d/%m/%Y à %H:%M') %></li>
+      <li class="list-group-item"><strong>Prix : </strong><%= @event.price %> €</li>
+      <li class="list-group-item"><strong>Où : </strong><%= @event.location %></li>
+      <li class="list-group-item"><strong>Description : </strong><%= @event.description %></li>
+    </ul>
+  </div>
+  <% if user_signed_in? %>
     <% if @event.admin_id == current_user.id %>
       <%= link_to 'Edit', edit_event_path(@event), class:"btn btn-success" %> 
       <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
+      <div class="card my-0">
+        <p>
+        <%= form_tag event_event_pics_path(@event), multipart: true do %>
+          <%= file_field_tag :event_pic%>
+          <%= submit_tag "Changer la photo de l'évènement", class:'btn btn-primary' %>
+        <% end %>
+        </p>
+      </div>
     <% end %>
 
-<% if @event.admin_id != current_user.id %>
-    <% if @event.users.include?(current_user) %>
-    <p>Bravo tu participes déjà à cet évènement !!</p>
+    <% if @event.admin_id != current_user.id %>
+      <% if @event.users.include?(current_user) %>
+        <p>Bravo tu participes déjà à cet évènement !!</p>
+      <% else %>
+        <%= link_to "Participer à l'évènement", new_attendance_path(id: @event.id), class:"btn btn-success" %>
+      <% end %>
     <% else %>
-      <%= link_to "Participer à l'évènement", new_attendance_path(id: @event.id), class:"btn btn-success" %>
-    <% end %> 
-     <% else %>
-     <%= link_to "Mon espace evenement", attendances_path(id: @event.id), class:"btn btn-success" %>
-  <% end %>  
-    <%= link_to 'Retour Accueil', events_path, class:"btn btn-primary" %>
+      <%= link_to "Mon espace l'évènement", attendances_path(id: @event.id), class:"btn btn-success" %> 
+    <% end %>
+  <% end %>
+  <%= link_to 'Retour Accueil', events_path, class:"btn btn-primary" %>
   <p>Il y a <%= @event.users.count %> participants!!</p> 
 </main>
